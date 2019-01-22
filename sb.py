@@ -238,6 +238,7 @@ def helpmessage():
                   "║┝──[ ❇ MEDIA ❇]" + "\n" + \
                   "║│ Kalender" + "\n" + \
                   "║│ CheckDate「Date」" + "\n" + \
+                  "║│ AutoJoinTicket" + "\n" + \
                   "║┝───────────────\n║╰❉      DPK BOT      ❇\n╰━━━━━━━━━━━━━━━━\n━━━━┅═❉ই۝ई❉═┅━━━━"
     return helpMessage
     
@@ -944,6 +945,40 @@ def clBot(op):
                             if clMID in mention["M"]:
                               if settings["detectMention"] == True:
                                  sendMention(receiver, sender, "", " \nWoy kamu kesepian yak?? ")
+##
+#
+#
+                        elif cmd == "autojointicket on":
+                            if settings["autoJoinTicket"] == True:
+                                client.sendMessage(to, "Auto join ticket telah aktif")
+                            else:
+                                settings["autoJoinTicket"] = True
+                                client.sendMessage(to, "Berhasil mengaktifkan auto join ticket")
+                        elif cmd == "autojointicket off":
+                            if settings["autoJoinTicket"] == False:
+                                client.sendMessage(to, "Auto join ticket telah nonaktif")
+                            else:
+                                settings["autoJoinTicket"] = False
+                                client.sendMessage(to, "Berhasil menonaktifkan auto join ticket")
+                                
+                                #
+                                #
+if "/ti/g/" in msg.text.lower():
+                            if settings["autoJoinTicket"] == True:
+                                link_re = re.compile('(?:line\:\/|line\.me\/R)\/ti\/g\/([a-zA-Z0-9_-]+)?')
+                                links = link_re.findall(text)
+                                n_links = []
+                                for l in links:
+                                    if l not in n_links:
+                                        n_links.append(l)
+                                for ticket_id in n_links:
+                                    group = client.findGroupByTicket(ticket_id)
+                                    client.acceptGroupInvitationByTicket(group.id,ticket_id)
+                                    client.sendMessage(to, "Selamat Datang %s" % str(group.name))
+                    
+
+
+
 
         if op.type == 17:
            print ("MEMBER JOIN TO GROUP")
