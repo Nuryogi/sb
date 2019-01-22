@@ -31,6 +31,72 @@ call = cl
 read = json.load(readOpen)
 settings = json.load(settingsOpen)
 
+wait = {
+    'contact':True,
+    'detectMention':True,
+    'autoJoin':False,
+    'autoCancel':{"on":False,"members":1},
+    'leaveRoom':True,
+    'timeline':False,
+    'autoAdd':False,
+    'message':"""
+               [ AOTO  LIKE  ]
+                 [ SELF BOT ]
+
+     [By.☬่❂>ͣ▪т̶є̶α̶м̶в̶σ̶т̶ℓ☬]
+   http://line.me/ti/p/~getk9999
+
+   ─██─███─███─██─██─██▄█
+   ─██─▀██▄██▀─▀█▄█▀─██▀█
+   ▄██▄▄█▀▀▀─────▀──▄██▄▄█
+
+         [By.☬่❂>ͣ▪т̶є̶α̶м̶в̶σ̶т̶ℓ☬]
+   http://line.me/ti/p/~getk9999""",
+    "lang":"JP",
+    "comment":"Auto Like By ",
+    "welmsg":"welcome to group",
+    "commentOn":False,
+    "comment1":"""
+               [ AOTO  LIKE  ]
+                 [ SELF BOT ]
+
+     [By.☬่❂>ͣ▪т̶є̶α̶м̶в̶σ̶т̶ℓ☬]
+   http://line.me/ti/p/~getk9999
+
+   ▀██▀────██─██──██████
+   ─██──██────██──██
+   ─████──────██──██████
+   ─██──██────██──██
+   ▄██▄───██──██──██████
+         [By.☬่❂>ͣ▪т̶є̶α̶м̶в̶σ̶т̶ℓ☬]
+   http://line.me/ti/p/~getk9999""",
+    "comment2":"Bot Auto Like ©By : Nadya\nContact Me : 👉 line.me/ti/p/~getk9999",
+    "comment3":"Bot Auto Like ©By : Nadya\nContact Me : 👉 line.me/ti/p/~getk9999.",    
+    "comment4":"Bot Auto Like ©By : Nadya\nContact Me : 👉 line.me/ti/p/~getk9999.",    
+    "commentOn":True,
+    "wc":False, 
+    "likeOn":True,
+    "wc":False,
+    "commentBlack":{},
+    "wblack":False,
+    "Notifed":False,
+    "Notifedbot":False,
+    "atjointicket":False,
+    "dblack":False,
+    "clock":False,
+    "Sambutan":False,
+    "tag":False,
+    "pesan":"☺อย่าแท้กบ่อยน่ะเดะจับเยสเรย☺",
+    "cNames":"",
+    "blacklist":{},
+    "group":False,
+    "wblacklist":False,
+    "dblacklist":False,
+    "protect":False,
+    "cancelprotect":False,
+    "inviteprotect":False,
+    "linkprotect":False,
+}
 
 settings = {
     "autoAdd": False,
@@ -286,6 +352,35 @@ def clBot(op):
                 jawaban1 = ("Selamat Datang Di Grup " + str(ginfo.name))
                 cl.sendText(msg.to,"Owner Grup " + str(ginfo.name) + " :\n" + ginfo.creator.displayName )
 
+#
+            elif msg.text in ["Welcome:on"]:
+              if msg.from_ in admin:
+                if wait["welcomemsg"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                else:
+                    wait["welcomesg"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"welcome message on")
+            elif msg.text in ["Welcome:off"]:
+              if msg.from_ in admin:
+                if wait["welcomemsg"] == False:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                else:
+                    wait["welcomemsg"] = False
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+#
+
                 elif text.lower() == 'dell':
                     cl.removeAllMessages(op.param2)
                     cl.sendMessage(to, "Menghapus Chat")
@@ -299,18 +394,6 @@ def clBot(op):
                 elif text.lower() == 'restart':
                     cl.sendMessage(to, "Sudah di restart...")
                     restartBot()
-            	elif msg.text.lower() == 'invite:gcreator':
-                	if msg.toType == 2:
-                       		ginfo = cl.getGroup(msg.to)
-                       		try:
-                           	gcmid = ginfo.creator.mid
-                       except:
-                           	gcmid = "Error"
-                       if wait["lang"] == "JP":
-                           	cl.inviteIntoGroup(msg.to,[gcmid])
-                       else:
-                           	cl.inviteIntoGroup(msg.to,[gcmid])			
-			
                 elif text.lower() == 'runtime':
                     timeNow = time.time()
                     runtime = timeNow - botStart
@@ -961,21 +1044,21 @@ def clBot(op):
                         for mention in mentionees:
                             if clMID in mention["M"]:
                               if settings["detectMention"] == True:
-                                 sendMention(receiver, sender, "", " \nWoy kamu kesepian yak?? ")
+                                 sendMention(receiver, sender, "", " \nngetag hmm, rindu ya kk? jangan rindu ka, rindu itu berat biar aku aja :)")
 
         if op.type == 17:
-           print ("MEMBER JOIN TO GROUP")
+           print ("ada temen baru nih...")
            if settings["notifikasi"] == True:
              if op.param2 in clMID:
                  return
              ginfo = cl.getGroup(op.param1)
              contact = cl.getContact(op.param2)
              image = "http://dl.profile.line.naver.jp/" + contact.pictureStatus
-             cl.sendMessage(op.param1,"Halo... " + cl.getContact(op.param2).displayName + "\nSelamat datang di\n💎 " + str(ginfo.name) + " 💎" + "\n jangan lupa ngenot \n& Semoga betah ya😃")
+             cl.sendMessage(op.param1,"Halo... " + cl.getContact(op.param2).displayName + "\nWelcome kk, salam kenal\n💎 " + str(ginfo.name) + " 💎" + "\n jangan lupa ngenot \n& Semoga betah ya😃")
              cl.sendImageWithURL(op.param1,image)
 
         if op.type == 15:
-           print ("MEMBER LEAVE TO GROUP")
+           print ("leap :(")
            if settings["notifikasi"] == True:
              if op.param2 in clMID:
                  return
@@ -983,7 +1066,7 @@ def clBot(op):
              contact = cl.getContact(op.param2)
              image = "http://dl.profile.line.naver.jp/" + contact.pictureStatus
              cl.sendImageWithURL(op.param1,image)
-             cl.sendMessage(op.param1,"Naah nahh.... " + cl.getContact(op.param2).displayName + "\nBaper tingkat tinggi😂")
+             cl.sendMessage(op.param1,"yaah leap..." + cl.getContact(op.param2).displayName + "\npadahal kan kita belum ...")
 
         if op.type == 55:
             print ("[ 55 ] NOTIFIED READ MESSAGE")
