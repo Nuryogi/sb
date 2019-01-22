@@ -346,42 +346,7 @@ def clBot(op):
                     helpMessage = helpmessage()
                     cl.sendMessage(to, str(helpMessage))
                     cl.sendContact(to, "ud296655acef67cbd5e8208e63629f78b")
-                elif msg.text.lower() == 'welcome':
-                ginfo = cl.getGroup(msg.to)
-                cl.sendText(msg.to,"Selamat Datang Di Grup " + str(ginfo.name))
-                jawaban1 = ("Selamat Datang Di Grup " + str(ginfo.name))
-                cl.sendText(msg.to,"Owner Grup " + str(ginfo.name) + " :\n" + ginfo.creator.displayName )
-
-#
-            elif msg.text in ["Welcome:on"]:
-              if msg.from_ in admin:
-                if wait["welcomemsg"] == True:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
-                    else:
-                        cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
-                else:
-                    wait["welcomesg"] = True
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
-                    else:
-                        cl.sendText(msg.to,"welcome message on")
-            elif msg.text in ["Welcome:off"]:
-              if msg.from_ in admin:
-                if wait["welcomemsg"] == False:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
-                    else:
-                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
-                else:
-                    wait["welcomemsg"] = False
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
-                    else:
-                        cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
-#
-
-                elif text.lower() == 'dell':
+		elif text.lower() == 'dell':
                     cl.removeAllMessages(op.param2)
                     cl.sendMessage(to, "Menghapus Chat")
                 elif text.lower() == 'speed':
