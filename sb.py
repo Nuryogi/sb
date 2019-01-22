@@ -299,6 +299,18 @@ def clBot(op):
                 elif text.lower() == 'restart':
                     cl.sendMessage(to, "Sudah di restart...")
                     restartBot()
+            	elif msg.text.lower() == 'invite:gcreator':
+                	if msg.toType == 2:
+                       		ginfo = cl.getGroup(msg.to)
+                       		try:
+                           	gcmid = ginfo.creator.mid
+                       except:
+                           	gcmid = "Error"
+                       if wait["lang"] == "JP":
+                           	cl.inviteIntoGroup(msg.to,[gcmid])
+                       else:
+                           	cl.inviteIntoGroup(msg.to,[gcmid])			
+			
                 elif text.lower() == 'runtime':
                     timeNow = time.time()
                     runtime = timeNow - botStart
